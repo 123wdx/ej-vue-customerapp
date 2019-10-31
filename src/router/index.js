@@ -7,6 +7,7 @@ import User from '../views/user/user'
 import Index from '../views/index'
 import Orders from '../views/Orders/placeOrders'
 import Address from '../views/address/address'
+import editAddress from '../views/address/editAddress'
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     path: '/Address',
     name: 'Address',
     component: Address
+  },
+  {
+    path: '/editAddress',
+    name: 'editAddress',
+    component: editAddress
   },
   {
     path: '/index',

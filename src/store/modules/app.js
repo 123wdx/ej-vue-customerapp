@@ -14,6 +14,8 @@ export default{
       //登陆
       let result=await post_json('/user/login',data)
       let token=result.data.token
+      //将token缓存到本地
+      localStorage.setItem("token",token)
       await context.dispatch('getuserInfo',token)
     },
     async getuserInfo(context,token){

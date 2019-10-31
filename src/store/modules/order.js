@@ -33,7 +33,7 @@ export default {
     },
     async findAllOrders({commit}){
       let result =await get("/order/findAll")
-      commit("resetOrders",result.data);
+           commit("resetOrders",result.data);
     },
     async confirmOrder({dispatch},orderId){
       let result = await get("/order/confirmOrder",{orderId})

@@ -8,6 +8,7 @@ import Index from '../views/index'
 import Orders from '../views/Orders/placeOrders'
 import Address from '../views/address/address'
 import editAddress from '../views/address/editAddress'
+import orderdetial from '../views/Orders/orderdetial'
 Vue.use(VueRouter)
 
 const routes = [
@@ -48,6 +49,11 @@ const routes = [
         component: User
       },
     ]
+  },
+  {
+    path: '/orderdetial',
+    name: 'orderdetial',
+    component: orderdetial
   },
   
   // {

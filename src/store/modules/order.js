@@ -1,4 +1,5 @@
 import {get,post,post_array_dots} from "../http"
+
 export default {
   namespaced:true,
   state:{
@@ -21,9 +22,18 @@ export default {
     }
   },
   actions:{
-    async saveOrder({commit},order){
-      let result = post_array_dots("/order/save",order)
-      commit("resetMessage",result.statusText);
+  
+    async saveOrder({commit,rootState}){
+      let data = {
+        customerId:rootState.app.user.id,
+        addressId:rootState.address.address.id,
+        orderLines:Array.from(rootState.shopcar.orderLines.values())
+      }
+      // 2. 调用后台接口完成保存
+      let response = await post_array_dots('/order/save',data)
+      // 3. 清空购物车（order -> shopcar）
+      commit('shopcar/clearShopCar',null,{root:true})
+      return response;
     },
     async findCustomerOrders({commit,rootState}){
       let result = await get("/order/query",{

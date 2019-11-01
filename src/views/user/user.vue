@@ -39,6 +39,7 @@ export default {
     },
     methods:{
         ...mapActions('address',['findByCustomerId']),
+        ...mapActions('app',['logout']),
         logoutHandler(){
             //退出
             this.$router.push('/')

@@ -29,7 +29,6 @@ axios.interceptors.response.use(function (response) {
   response.statusText = data.message;
   if(data.status!==200){
     //数据异常
-  alert(data.message)
   return Promise.reject(data.message);
   }
   return response;

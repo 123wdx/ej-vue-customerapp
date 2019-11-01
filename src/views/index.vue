@@ -11,11 +11,24 @@
     </div>
 </template>
 <script>
+import {getToken} from '.././utils/auth'
+import { mapActions } from 'vuex'
 export default {
     data(){
         return{
             active:"index"
         }
+    },
+    created(){
+       let token=getToken()
+       if(token){
+           this.getuserInfo()
+       }else{
+           this.router.push('/')
+       }
+    },
+    methods:{
+        ...mapActions('app',["getuserInfo"])
     }
 }
 </script>
